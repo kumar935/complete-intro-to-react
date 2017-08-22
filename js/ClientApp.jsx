@@ -1,21 +1,24 @@
-import React from 'react';
+import React from 'react'; // can't remove this dependency even though it direclty doesn't seem to be used because jsx gets transpiled to React.createElement
 import { render } from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Landing from './Landing';
+import Search from './Search';
+// class is a reserved word, that's why we need to call it className
 
-const ce = React.createElement;
+const FourOhFour = () => <h1>404</h1>
 
-const MyTitle = function(props) {
-  return ce('div', null, ce('h1', { style: { color: props.color } }, props.title));
-};
+const App = () => (
+  <BrowserRouter>
+    <div className="app">
+     {/* what Switch component does is only render one element */}
+      <Switch>
+        <Route exact path="/" component={Landing}/>
+        <Route path="/search" component={Search}/>
+        <Route component={FourOhFour}/>  
+      </Switch>
+    </div>  
+  </BrowserRouter>
+);
 
-const MyFirstComponent = function() {
-  return ce(
-    'div',
-    { id: 'my-first-component' },
-    ce(MyTitle, { title: 'Game of Thrones', color: 'YellowGreen' }),
-    ce(MyTitle, { title: 'Stranger Things', color: 'GreenYellow' }),
-    ce(MyTitle, { title: 'Rick and Morty', color: 'LimeGreen' }),
-    ce(MyTitle, { title: 'House of Cards', color: 'peru' })
-  );
-};
-
-render(ce(MyFirstComponent), document.getElementById('app'));
+// if we didn't use exact, "/" will match "/foo" which we don't want, we only want "/"
+render(<App/>, document.getElementById('app'));
