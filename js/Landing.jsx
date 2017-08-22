@@ -13,7 +13,7 @@ class Landing extends React.Component {
   render(){
     return (
       <div className="landing">
-        <h1>svideo</h1>
+        <h1>svvideo</h1>
         <input type="text" value={this.state.searchTerm} onChange={this.handleSearchTerm} placeholder="Search"/>
         <Link to='/search'> Or Browse All</Link>
       </div>      
