@@ -1,6 +1,8 @@
+// @flow
+
 import React, { Component } from 'react';
-import preload from '../data.json';
 import ShowCard from './ShowCard';
+import Header from './Header';
 
 class Search extends Component {
   // class needs to have render method which should return markup
@@ -20,8 +22,13 @@ class Search extends Component {
   state = {
     searchTerm: ""
   }
+  props: {
+    shows: Array<Show>
+  }
   
-  handleSearchTermChange = event => { // writing it as arrow function for the babelrc plugin "babel-plugin-transform-class-properties" to allow the this binding
+  // handleSearchTermChange = event => { // writing it as arrow function for the babelrc plugin "babel-plugin-transform-class-properties" to allow the this binding
+  // before flow ^, after flow below ->
+  handleSearchTermChange = (event: SyntheticKeyboardEvent & {target: HTMLInputElement}) => {
     this.setState({searchTerm: event.target.value});
     // this.state.searchTerm = 'blah' // this will work, but then react won't know state has been changed, and using setState you tell react to rerender explicitly
     // event = synthetic react event, almost similar to dom event
@@ -30,13 +37,10 @@ class Search extends Component {
   render () {
     return (
       <div className="search">
-        <header>
-          <h1>svideo</h1>
-          <input type="text" onChange={this.handleSearchTermChange} placeholder="Search" value={this.state.searchTerm}/>
-        </header>
+        <Header showSearch handleSearchTermChange={this.handleSearchTermChange} searchTerm={this.state.searchTerm}/>
         <div>
           {/* preload.shows.map(show => <ShowCard key={show.imdbID} {...show}/>) */}  
-          {preload.shows
+          {this.props.shows
             .filter(show => `${show.title} ${show.description}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0)
             .map(show => <ShowCard key={show.imdbID} {...show}/>)}
         </div>

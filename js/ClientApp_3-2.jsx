@@ -1,4 +1,5 @@
-import React from 'react'; //can't remove this dependency even though it direclty doesn't seem to be used because jsx gets transpiled to React.createElement
+/*
+import React from 'react'; // can't remove this dependency even though it direclty doesn't seem to be used because jsx gets transpiled to React.createElement
 import { render } from 'react-dom';
 
 const MyTitle = function(props) {
@@ -7,7 +8,7 @@ const MyTitle = function(props) {
       <h1 style={ {color: props.color} }>{props.title}</h1>
     </div>
   )
-  //can't return 2 top level elements because React.createElement(x), React.createElement(y) doesn't make sense. although in React 16 it'll work 
+  // can't return 2 top level elements because React.createElement(x), React.createElement(y) doesn't make sense. although in React 16 it'll work 
 };
 
 const MyFirstComponent = function() {
@@ -23,3 +24,5 @@ const MyFirstComponent = function() {
 };
 
 render(<MyFirstComponent/>, document.getElementById('app'));
+
+*/

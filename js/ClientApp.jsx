@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react'; // can't remove this dependency even though it direclty doesn't seem to be used because jsx gets transpiled to React.createElement
 import { render } from 'react-dom';
 import App from './App';

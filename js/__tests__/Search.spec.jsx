@@ -18,7 +18,7 @@ test('Search renders correctly', () => {
 // below with using enzyme
 
 test('Search renders correctly', () => {
-  const component = shallow(<Search/>);
+  const component = shallow(<Search shows={preload.shows}/>);
   expect(component).toMatchSnapshot();
 })
 
