@@ -1,5 +1,5 @@
 const path = require('path');
-const Webpack = require('Webpack');
+const Webpack = require('webpack');
 
 module.exports = {
   context: __dirname,

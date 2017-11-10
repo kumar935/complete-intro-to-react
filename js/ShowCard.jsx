@@ -45,7 +45,13 @@ class ShowCard extends Component{
     return false;
     // ^this says once it has rendered, never update it.
   }
-  props: Show
+  props: Show,
+  componentWillMount(){
+    console.log("hello")
+  }
+  componentWillReceiveProps(newProps){
+
+  }
   render() {
     return (
       <Wrapper className="show-card" to={`/details/${this.props.imdbID}`}>
